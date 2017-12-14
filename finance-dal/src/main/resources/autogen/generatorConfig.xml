@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+
+<generatorConfiguration>
+    <classPathEntry
+            location="D:\Work\ebyf-config\mysql-connector-java-5.1.41-bin.jar"/>
+    <context id="mybatis" targetRuntime="MyBatis3" defaultModelType="flat">
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+        <property name="javaFileEncoding" value="UTF-8"/>
+        <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+            <property name="mappers" value="com.ebyf.wm.finance.dal.mapper.MyMapper"/>
+            <!--
+                        <property name="mappers" value="tk.mybatis.mapper.common.Mapper"/>
+            -->
+        </plugin>
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="false"/>
+        </commentGenerator>
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://172.16.89.141:3306/ebyf_fi"
+                        userId="root"
+                        password="ebyf8888">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="true"/>
+        </javaTypeResolver>
+        <javaModelGenerator targetPackage="com.ebyf.wm.finance.dal.model"
+                            targetProject="src/main/java"/>
+        <sqlMapGenerator targetPackage="sqlmapper"
+                         targetProject="src/main/resources"/>
+        <javaClientGenerator targetPackage="com.ebyf.wm.finance.dal.dao"
+                             targetProject="src/main/java" type="XMLMAPPER"/>
+
+        <table tableName="t_fi_unique_id">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+
+    </context>
+</generatorConfiguration>
+
